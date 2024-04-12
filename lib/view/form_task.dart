@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'; // Importación de Cloud Firestore
+import 'package:flutter/material.dart'; // Importación de Flutter Material
 
 class AddNewTaskScreen extends StatefulWidget {
   const AddNewTaskScreen({super.key});
@@ -9,14 +9,16 @@ class AddNewTaskScreen extends StatefulWidget {
 }
 
 class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
-  final nameController = TextEditingController();
-  final numberController = TextEditingController();
+  final nameController =
+      TextEditingController(); // Controlador para el campo de nombre
+  final numberController =
+      TextEditingController(); // Controlador para el campo de número
 
   @override
   void dispose() {
-    nameController.dispose();
-    numberController.dispose();
-    print('Dispose');
+    nameController.dispose(); // Libera los recursos del controlador de nombre
+    numberController.dispose(); // Libera los recursos del controlador de número
+    print('Dispose'); // Imprime un mensaje cuando se elimina el estado
     super.dispose();
   }
 
@@ -24,8 +26,9 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Add New Task'),
-          backgroundColor: Colors.lightGreen,
+          title: const Text('Add New Task'), // Título de la barra de aplicación
+          backgroundColor:
+              Colors.lightGreen, // Color de fondo de la barra de aplicación
         ),
         body: Center(
           child: Column(
@@ -35,9 +38,10 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                 child: TextField(
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'Name',
+                    hintText: 'Name', // Texto de ayuda para el campo de nombre
                   ),
-                  controller: nameController,
+                  controller:
+                      nameController, // Asigna el controlador al campo de nombre
                 ),
               ),
               Padding(
@@ -45,30 +49,36 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                 child: TextField(
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'Number',
+                    hintText:
+                        'Number', // Texto de ayuda para el campo de número
                   ),
-                  controller: numberController,
+                  controller:
+                      numberController, // Asigna el controlador al campo de número
                 ),
               ),
               ElevatedButton(
                   onPressed: () {
-                    // Create a new user with a first and last name
+                    // Crear un nuevo objeto tarea con el nombre y número proporcionados
                     final task = <String, dynamic>{
                       "name": nameController.text,
                       "number": int.parse(numberController.text),
                     };
 
-                    final db = FirebaseFirestore.instance;
+                    final db =
+                        FirebaseFirestore.instance; // Instancia de Firestore
 
                     db
-                        .collection("finanzas")
-                        .add(task)
+                        .collection(
+                            "finanzas") // Colección de Firestore para guardar las tareas
+                        .add(task) // Agrega la tarea a la colección
                         .then((DocumentReference doc) {
-                      Navigator.pop(context);
-                      print('DocumentSnapshot added with ID: ${doc.id}');
+                      Navigator.pop(context); // Regresa a la pantalla anterior
+                      print(
+                          'DocumentSnapshot added with ID: ${doc.id}'); // Imprime el ID del documento agregado
                     });
                   },
-                  child: const Text('Add New Task')),
+                  child: const Text(
+                      'Add New Task')), // Texto del botón para agregar una nueva tarea
             ],
           ),
         ));
