@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "828642726022",
+    "project_id": "firestore-5d991",
+    "storage_bucket": "firestore-5d991.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828642726022:android:a82002edae341ba85e0107",
+        "android_client_info": {
+          "package_name": "com.example.todolist_firabases"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmdCRFlMLodtIO3szUz7UF7n2gq1a76l0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
